@@ -1,26 +1,23 @@
 ﻿using Microsoft.Win32;
 using MVVMUtilities.Abstractions;
+using MVVMUtilities.Core;
 using MVVMUtilities.Exceptions;
 using System.Linq;
 
 namespace MVVMUtilities.Services
 {
-    public class OpenFileDialogService : IFileDialogService<FileOpenAction>
+    public class OpenFileDialogService : FileDialogService, IFileDialogService<FileOpenAction>
     {
-        private FileDialog fileDialog;
-        public OpenFileDialogService(string filtername, string extensions)
+        public OpenFileDialogService(string filtername, string extensions) : base(filtername, extensions)
         {
-            if (extensions.Split(" ").Any())
-            {
-                extensions = string.Join(";", extensions.Split(" "));
-            }
-            fileDialog = new OpenFileDialog
-            {
-                Filter = filtername + @"|" + extensions
-            };
+
         }
-        public string GetFileName()
+        public override string GetFileName()
         {
+            FileDialog fileDialog = new OpenFileDialog
+            {
+                Filter = GetFilter(filtername, extensions)
+            };
             fileDialog.ShowDialog();
             if (string.IsNullOrWhiteSpace(fileDialog.FileName))
             {

@@ -1,26 +1,23 @@
 ﻿using Microsoft.Win32;
 using MVVMUtilities.Abstractions;
+using MVVMUtilities.Core;
 using MVVMUtilities.Exceptions;
 using System.Linq;
 
 namespace MVVMUtilities.Services
 {
-    public class SaveFileDialogService : IFileDialogService<FileSaveAction>
+    public class SaveFileDialogService : FileDialogService, IFileDialogService<FileSaveAction>
     {
-        private FileDialog fileDialog;
-        public SaveFileDialogService(string filtername, string extensions)
+        public SaveFileDialogService(string filtername, string extensions) : base(filtername, extensions)
         {
-            if (extensions.Split(" ").Any())
-            {
-                extensions = string.Join(";", extensions.Split(" "));
-            }
-            fileDialog = new SaveFileDialog
-            {
-                Filter = filtername + @"|" + extensions
-            };
+
         }
-        public string GetFileName()
+        public override string GetFileName()
         {
+            FileDialog fileDialog = new SaveFileDialog
+            {
+                Filter = GetFilter(filtername, extensions)
+            };
             fileDialog.ShowDialog();
             if (string.IsNullOrWhiteSpace(fileDialog.FileName))
             {
@@ -29,4 +26,5 @@ namespace MVVMUtilities.Services
             return fileDialog.FileName;
         }
     }
+    
 }
