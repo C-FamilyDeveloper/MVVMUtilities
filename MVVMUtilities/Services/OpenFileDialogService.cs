@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using MVVMUtilities.Abstractions;
-using MVVMUtilities.Core;
 using MVVMUtilities.Exceptions;
 using System.Linq;
 

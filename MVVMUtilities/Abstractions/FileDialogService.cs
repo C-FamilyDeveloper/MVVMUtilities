@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVVMUtilities.Core
+namespace MVVMUtilities.Abstractions
 {
     public abstract class FileDialogService
     {
         protected string filtername;
         protected string extensions;
-        protected FileDialogService (string filtername, string extensions)
+        protected FileDialogService(string filtername, string extensions)
         {
             this.filtername = filtername;
             this.extensions = extensions;
