@@ -32,11 +32,11 @@ namespace MVVMUtilities.Core
             return canExecute == null || canExecute(parameter);
         }
 
-        public  void Execute(object parameter)
-        {            
+        public async void Execute(object parameter)
+        {
             if (dispatcher is not null)
             {
-                dispatcher.Invoke(execute);
+                await dispatcher.InvokeAsync(execute);
             }
             else
             {

@@ -7,16 +7,16 @@ namespace MVVMUtilities.Services
 {
     public class OpenFileDialogService : FileDialogService, IFileDialogService<FileOpenAction>
     {
+        private FileDialog fileDialog;
         public OpenFileDialogService(string filtername, string extensions) : base(filtername, extensions)
         {
-
-        }
-        public override string GetFileName()
-        {
-            FileDialog fileDialog = new OpenFileDialog
+            fileDialog = new OpenFileDialog
             {
                 Filter = GetFilter(filtername, extensions)
             };
+        }
+        public override string GetFileName()
+        {
             fileDialog.ShowDialog();
             if (string.IsNullOrWhiteSpace(fileDialog.FileName))
             {
