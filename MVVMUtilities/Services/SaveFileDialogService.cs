@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MVVMUtilities.Services
 {
-    public class SaveFileDialogService : FileDialogService, IFileDialogService<FileSaveAction>
+    public class SaveFileDialogService : DialogIOService, IFileDialogService<FileSaveAction>
     {
         private FileDialog fileDialog;
         public SaveFileDialogService(string filtername, string extensions) : base(filtername, extensions)
@@ -15,7 +15,7 @@ namespace MVVMUtilities.Services
                 Filter = GetFilter(filtername, extensions)
             };
         }
-        public override string GetFileName()
+        public string GetFileName()
         {
             fileDialog.ShowDialog();
             if (string.IsNullOrWhiteSpace(fileDialog.FileName))

@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace MVVMUtilities.Abstractions
 {
-    public abstract class FileDialogService
+    public abstract class DialogIOService
     {
         protected string filtername;
         protected string extensions;
-        protected FileDialogService(string filtername, string extensions)
+
+        protected DialogIOService(string filtername, string extensions)
         {
             this.filtername = filtername;
             this.extensions = extensions;
         }
+
         protected string GetFilter(string filtername, string extensions)
         {
             if (extensions.Split(" ").Any())
@@ -24,6 +26,5 @@ namespace MVVMUtilities.Abstractions
             }
             return filtername + @"|" + extensions;
         }
-        public abstract string GetFileName();
     }
 }

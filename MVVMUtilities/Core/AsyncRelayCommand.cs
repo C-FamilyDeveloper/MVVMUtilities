@@ -31,6 +31,7 @@ namespace MVVMUtilities.Core
         {
             await ExecuteAsync();
         }
+
         private async Task ExecuteAsync()
         {
             await Task.Run(execute);
