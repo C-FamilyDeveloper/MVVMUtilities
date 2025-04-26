@@ -1,7 +1,8 @@
-﻿namespace MVVMUtilities.Core
+﻿using System.Windows;
+
+namespace MVVMUtilities.Core
 {
     public class BaseViewModel : ObservableObject
     {
-
     }
 }

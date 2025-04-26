@@ -2,6 +2,6 @@
 {
     public interface ICheckInstanceService
     {
-        public bool IsOneApplicationInstance();
+        bool IsOneApplicationInstance();
     }
 }

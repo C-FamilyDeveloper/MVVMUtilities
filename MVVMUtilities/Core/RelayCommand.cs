@@ -7,11 +7,13 @@ namespace MVVMUtilities.Core
     {
         private Action execute;
         private Predicate<object> canExecute;
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
+
         public RelayCommand(Action execute, Predicate<object> canExecute = null)
         {
             this.execute = execute;

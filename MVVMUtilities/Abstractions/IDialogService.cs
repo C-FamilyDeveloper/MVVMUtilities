@@ -4,9 +4,9 @@ namespace MVVMUtilities.Abstractions
 {
     public interface IDialogService
     {
-        public void ShowMessage(string message);
-        public void ShowErrorMessage(string message, string caption);
-        public void ShowWarningMessage(string message, string caption);
-        public DialogResponce ShowQuestionMessage(string message, string caption);
+        void ShowMessage(string message);
+        void ShowErrorMessage(string message, string caption);
+        void ShowWarningMessage(string message, string caption);
+        DialogResponce ShowQuestionMessage(string message, string caption);
     }
 }

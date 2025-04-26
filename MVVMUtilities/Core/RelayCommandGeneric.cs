@@ -7,6 +7,7 @@ namespace MVVMUtilities.Core
     {
         private Action<T> execute;
         private Predicate<T> canExecute;
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }

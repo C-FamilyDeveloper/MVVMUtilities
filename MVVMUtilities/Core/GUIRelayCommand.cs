@@ -20,6 +20,7 @@ namespace MVVMUtilities.Core
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
+
         public GUIRelayCommand (Action execute, Dispatcher dispatcher = null, Predicate<object> canExecute = null)
         {
             this.execute = execute;
