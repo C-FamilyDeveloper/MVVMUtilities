@@ -25,8 +25,8 @@ namespace MVVMUtilities.Services
 
         public IEnumerable<string> GetFilePaths()
         {
-            fileDialog.ShowDialog();
-            if (!fileDialog.FileNames.Any())
+            var result = fileDialog.ShowDialog();
+            if (!fileDialog.FileNames.Any() || result == false)
             {
                 throw new FileNotChooseException();
             }
